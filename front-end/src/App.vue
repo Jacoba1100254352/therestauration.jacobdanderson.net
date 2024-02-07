@@ -3,9 +3,11 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
       <div class="container-fluid">
-        <router-link class="nav-item navbar-brand nav-link" to="/" aria-current="page">
-          Operation Opportunity
-        </router-link>
+        <!-- Replacing router-link with a regular link or span -->
+        <a href="#" class="nav-item navbar-brand nav-link" aria-current="page">
+          The Restoration
+        </a>
+
         <button
             class="navbar-toggler"
             type="button"
@@ -20,10 +22,12 @@
         <div id="navbarSupportedContent" class="collapse navbar-collapse">
           <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <router-link class="nav-link" to="/">Home</router-link>
+              <!-- Replacing router-link with a regular link or span -->
+              <a href="#" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about">About</router-link>
+              <!-- Replacing router-link with a regular link or span -->
+              <a href="#" class="nav-link">About</a>
             </li>
           </ul>
         </div>
@@ -31,7 +35,7 @@
     </nav>
 
     <!-- Main Content (Vue Router View) -->
-    <router-view />
+    <HomePage />
 
     <!-- Footer Section -->
     <footer class="text-center">
@@ -66,8 +70,11 @@
 </template>
 
 <script>
+import HomePage from "@/views/HomePage.vue";
+
 export default {
   name: "App",
+  components: {HomePage},
   data() {
     return {
       error: "", // Placeholder for potential error messages
