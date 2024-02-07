@@ -34,6 +34,14 @@
       </div>
     </nav>
 
+    <div class="main-content">
+      <h1>Welcome to The Restoration</h1>
+      <p>
+        The Restoration of the Gospel of Jesus Christ is a pivotal event in LDS doctrine,
+        marking the beginning of a new era of spiritual guidance and church establishment
+        by Joseph Smith, following heavenly visions and revelations.
+      </p>
+
     <!-- Main Content (Vue Router View) -->
     <HomePage />
 
@@ -66,6 +74,7 @@
 
       <p v-if="error" class="error">{{ error }}</p>
     </footer>
+      </div>
   </div>
 </template>
 
@@ -85,7 +94,6 @@ export default {
 </script>
 
 <style scoped>
-/* Global resets and default styles */
 body {
   margin: 0;
   padding: 0;
@@ -93,16 +101,26 @@ body {
   background-color: #ffffff;
 }
 
-/* Navigation styling */
 .navbar {
   font-family: Verdana, Arial, sans-serif;
+  padding: 10px;
+  background-color: #e3f2fd;
 }
 
-/* Footer styling */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
 footer {
   color: grey;
   background-color: #f7f7f7;
-  padding: 10px;
+  padding: 20px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -110,6 +128,7 @@ footer {
 
 footer h2 {
   text-transform: uppercase;
+  font-size: 1.5em;
 }
 
 footer a {
@@ -117,19 +136,17 @@ footer a {
   color: inherit;
 }
 
-/* GitHub icon specific styling */
 #githubIcon {
-  width: 50px; /* Adjusted for a better size */
+  width: 50px;
 }
 
-/* Media queries for responsive adjustments */
 @media (max-width: 960px) {
   footer {
     flex-direction: column;
   }
 
   #githubIcon {
-    width: 30px; /* Smaller size on narrower screens */
+    width: 30px;
   }
 }
 </style>
