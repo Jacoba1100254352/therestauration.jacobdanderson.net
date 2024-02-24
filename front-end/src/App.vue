@@ -1,152 +1,282 @@
 <template>
   <div id="app">
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
-      <div class="container-fluid">
-        <!-- Replacing router-link with a regular link or span -->
-        <a href="#" class="nav-item navbar-brand nav-link" aria-current="page">
-          The Restoration
-        </a>
+    <!----------------
+    -   Navigation   -
+    ----------------->
 
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="navbarSupportedContent" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <!-- Replacing router-link with a regular link or span -->
-              <a href="#" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item">
-              <!-- Replacing router-link with a regular link or span -->
-              <a href="#" class="nav-link">About</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <nav class="local">
+      <ul id="real_list" class="flexbox_container">
+        <li>
+          <router-link class="nav-link" to="/">Home</router-link>
+        </li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Experience</a></li>
+        <li>
+          <router-link class="nav-link" to="/about">About</router-link>
+        </li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Note: this is a pseudo container, for design only -->
+      <ul id="pseudo_list" class="flexbox_container">
+        <li class="pseudo_element"></li>
+        <li class="pseudo_element"></li>
+        <li class="pseudo_element"></li>
+        <li class="pseudo_element"></li>
+        <li class="pseudo_element"></li>
+      </ul>
     </nav>
 
-    <div class="main-content">
-      <h1>Welcome to The Restoration</h1>
-      <p>
-        The Restoration of the Gospel of Jesus Christ is a pivotal event in LDS doctrine,
-        marking the beginning of a new era of spiritual guidance and church establishment
-        by Joseph Smith, following heavenly visions and revelations.
-      </p>
+    <!-----------------
+    -   Router View   -
+    ------------------>
 
-    <!-- Main Content (Vue Router View) -->
-    <HomePage />
+    <router-view />
 
-    <!-- Footer Section -->
-    <footer class="text-center">
-      <div class="github">
-        <h2>Github</h2>
-        <nav class="footer_nav">
-          <ul class="semantic_list">
-            <li>
-              <a href="https://github.com/Jacoba1100254352/therestauration.jacobdanderson.net" target="_blank">
-                <!-- Updated to reference the public folder directly -->
-                <img id="githubIcon" src="/Images/github-dark.09072337.svg" alt="github Icon" />
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+    <!------------
+    -   Footer   -
+    ------------->
 
-      <div class="partner">
-        <h2>University Association</h2>
-        <nav class="footer_nav">
-          <ul class="semantic_list">
-            <li>
-              <a href="https://www.byu.edu" target="_blank">Brigham Young University</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <p v-if="error" class="error">{{ error }}</p>
+    <footer id="contact" class="section flexbox_container">
+      <h2>Contact</h2>
+      <nav class="footer_nav">
+        <ul>
+          <li>
+            <a href="https://www.facebook.com/jacoba1100254352" target="_blank"
+            >Facebook</a
+            >
+          </li>
+          <li>
+            <a href="https://www.github.com/Jacoba1100254352" target="_blank"
+            >Github</a
+            >
+          </li>
+          <li>
+            <a href="https://www.instagram.com/jacoba1100254352" target="_blank"
+            >Instagram</a
+            >
+          </li>
+        </ul>
+      </nav>
     </footer>
-      </div>
   </div>
 </template>
 
-<script>
-import HomePage from "@/views/HomePage.vue";
-
-export default {
-  name: "App",
-  components: {HomePage},
-  data() {
-    return {
-      error: "", // Placeholder for potential error messages
-    };
-  },
-  // Additional component logic can be added here
-};
-</script>
-
-<style scoped>
-body {
+<style>
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video /* eslint-disable-line */ {
   margin: 0;
   padding: 0;
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: #ffffff;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
-.navbar {
-  font-family: Verdana, Arial, sans-serif;
-  padding: 10px;
-  background-color: #e3f2fd;
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section /* eslint-disable-line */ {
+  display: block;
 }
 
-#app {
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/**************
+*   General   *
+**************/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: lightblue;
+  font-family: sans-serif;
+
+  --nav_height: calc(2 * var(--size_adjustment));
+  /*--common_background_color: white;*/
+
+  --text_scalar: 1;
+  --size_adjustment: 1.5;
+}
+
+.section {
+  background-color: whitesmoke;
+  padding: 10px 20px;
+  margin: 1%;
+  text-align: center;
+}
+
+h2 {
+  font-weight: bold;
+  text-align: center;
+  font-size: 125%;
+  padding-bottom: 5px;
+}
+
+/********************
+*   Media Screens   *
+********************/
+
+@media screen and (min-width: 961px) {
+  .flexbox_container {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+  }
+
+  article {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 49%;
+  }
+
+  #experience ul {
+    transform: translateX(2%);
+  }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  body {
+    width: 100%;
+  }
+
+  ul.flexbox_container {
+    flex-flow: row wrap;
+  }
+
+  nav.local {
+    width: 100%;
+  }
+
+  nav.local ul li {
+    width: 100%;
+  }
+
+  .section {
+    width: 100%;
+  }
+}
+
+/*****************
+*   Navigation   *
+*****************/
+
+/*nav.local,*/
+/*#real_list,*/
+/*#pseudo_list {*/
+/*  margin-bottom: 2%;*/
+/*}*/
+
+nav.local {
+  position: relative;
+}
+
+nav.local li {
+  width: calc(100% / 5);
+}
+
+nav.local a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding: 3%;
+}
+
+ul.flexbox_container {
+  flex-flow: row nowrap;
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  justify-content: space-between;
+  list-style-type: none;
 }
 
-.main-content {
-  flex-grow: 1;
+li.pseudo_element {
+  background-color: rgb(160, 160, 160);
 }
 
-footer {
-  color: grey;
-  background-color: #f7f7f7;
-  padding: 20px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+#pseudo_list li {
+  min-width: 80px;
 }
+
+#pseudo_list {
+  outline: 1px solid;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+#real_list,
+#real_list li {
+  text-align: center;
+  align-items: center;
+  z-index: 1;
+}
+
+nav.local > ul > li {
+  width: 20%;
+  line-height: var(--nav_height);
+}
+
+/*************
+*   Footer   *
+*************/
+
+/* footer a{ display: block; } */
+/* footer a:link, footer a:visited, footer a:focus{ background: rgb(128,128,128); }
+footer a:hover{  background: rgb(110,110,110); }
+footer a:active{ background: rgb(100,100,100); } */
 
 footer h2 {
-  text-transform: uppercase;
-  font-size: 1.5em;
+  width: 100%;
 }
 
-footer a {
-  text-decoration: none;
-  color: inherit;
+footer nav {
+  width: 100%;
 }
 
-#githubIcon {
-  width: 50px;
-}
-
-@media (max-width: 960px) {
-  footer {
-    flex-direction: column;
-  }
-
-  #githubIcon {
-    width: 30px;
-  }
+footer ul {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  list-style: none;
 }
 </style>
+<script setup></script>
