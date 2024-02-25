@@ -54,8 +54,23 @@ export default class AboutPage extends Vue {
 </script>
 
 <style scoped>
+.restoration-intro {
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
 .restoration-intro h1 {
   color: #2a6496;
+  font-size: 2em;
+}
+
+.key-events {
+  background-color: #e0e0e0;
+  padding: 20px;
+}
+
+.key-events h2 {
+  font-size: 1.5em;
 }
 
 .key-events ul {
@@ -69,5 +84,12 @@ export default class AboutPage extends Vue {
   color: green;
 }
 
-/* Add more styling as needed */
+.testimony {
+  background-color: #d0d0d0;
+  padding: 20px;
+}
+
+.testimony h2 {
+  font-size: 1.5em;
+}
 </style>

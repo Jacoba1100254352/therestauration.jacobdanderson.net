@@ -15,7 +15,6 @@
       <li>Translation of the Book of Mormon</li>
       <li>Restoration of the Priesthood</li>
       <li>Organization of the Church</li>
-      <!-- Add more list items as needed -->
     </ul>
   </section>
 
