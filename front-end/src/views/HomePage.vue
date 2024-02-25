@@ -1,7 +1,3 @@
-<script setup>
-// Import any components or utilities if needed
-</script>
-
 <template>
   <section class="restoration-intro">
     <h1>The Restoration of the Gospel</h1>
@@ -31,9 +27,29 @@
       act of love by our Heavenly Father, meant to guide us in these latter days..."
     </p>
   </section>
-
-  <!-- Add more sections as needed -->
 </template>
+
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+
+@Options({
+  name: "HomePage",
+})
+export default class HomePage extends Vue {
+  // If you have data, computed properties, methods, etc., they can be added here.
+  // For example, a simple data property would look like this:
+  data() {
+    return {
+      // your data properties here
+    };
+  }
+
+  // Example of a lifecycle hook
+  created() {
+    // your created hook logic here
+  }
+}
+</script>
 
 <style scoped>
 .restoration-intro {
