@@ -281,11 +281,13 @@
 </style>
 
 <script lang="ts">
-  import { Options, Vue } from 'vue-class-component';
+import { defineComponent, computed } from "vue";
+import { useStore } from "vuex";
 
-  @Options({
-    components: {
-    },
-  })
-  export default class App extends Vue {}
+export default defineComponent({
+	name: "App", // Replace with your component name
+	setup() {
+		const store = useStore();
+	},
+});
 </script>

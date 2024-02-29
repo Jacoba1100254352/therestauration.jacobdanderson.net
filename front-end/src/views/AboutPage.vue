@@ -32,25 +32,15 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { defineComponent, computed } from "vue";
+import { useStore } from "vuex";
 
-@Options({
-  name: "AboutPage",
-})
-export default class AboutPage extends Vue {
-  // If you have data, computed properties, methods, etc., they can be added here.
-  // For example, a simple data property would look like this:
-  data() {
-    return {
-      // your data properties here
-    };
-  }
-
-  // Example of a lifecycle hook
-  created() {
-    // your created hook logic here
-  }
-}
+export default defineComponent({
+	name: "AboutPage", // Replace with your component name
+	setup() {
+		const store = useStore();
+	},
+});
 </script>
 
 <style scoped>

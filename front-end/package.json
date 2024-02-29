@@ -1,27 +1,34 @@
 {
-  "name": "therestauration.jacobdanderson.net",
-  "version": "0.1.0",
-  "private": true,
-  "author": "",
+  "name": "front-end",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Jacob Anderson",
+  "keywords": [],
+  "license": "ISC",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lint-fix": "vue-cli-service lint --fix"
   },
+  "main": "dist/script.js",
   "dependencies": {
+    "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "bootstrap-vue": "^2.23.1",
-    "vue": "^3.4.19",
+    "vue": "^3.4.21",
     "vue-class-component": "^8.0.0-0",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.20",
+    "@types/node": "^20.11.22",
     "@types/webpack-env": "^1.18.4",
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
-    "@typescript-eslint/parser": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
+    "@vue/cli-plugin-router": "~5.0.8",
     "@vue/cli-plugin-typescript": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
     "@vue/eslint-config-typescript": "^12.0.0",
@@ -55,8 +62,6 @@
     "url": "https://github.com/jacoba1100254352/therestauration.jacobdanderson.net/issues"
   },
   "homepage": "https://github.com/jacoba1100254352/therestauration.jacobdanderson.net#readme",
-  "keywords": [],
-  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jacoba1100254352/therestauration.jacobdanderson.net.git"
