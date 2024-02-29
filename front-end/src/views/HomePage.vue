@@ -1,59 +1,70 @@
 <template>
-  <section class="restoration-intro">
-    <h1>The Restoration of the Gospel</h1>
-    <p>
-      The Restoration of the Gospel of Jesus Christ is a pivotal event in LDS doctrine,
-      marking the beginning of a new era of spiritual guidance and church establishment
-      by Joseph Smith, following heavenly visions and revelations.
-    </p>
-  </section>
+  <div class="home">
+    <section class="intro">
+      <h1>Welcome to the Digital Restoration Journey</h1>
+      <p>
+        Explore the pivotal events of the Restoration of the Gospel through an interactive digital experience. Delve
+        into key events, figures, and the profound spiritual journey that marks the beginning of a new era of guidance.
+      </p>
+    </section>
 
-  <section class="key-events">
-    <h2>Key Events of the Restoration</h2>
-    <ul>
-      <li>The First Vision</li>
-      <li>Translation of the Book of Mormon</li>
-      <li>Restoration of the Priesthood</li>
-      <li>Organization of the Church</li>
-    </ul>
-  </section>
+    <nav class="featured-links">
+      <router-link to="/map">Interactive Map</router-link>
+      |
+      <router-link to="/events">Key Events</router-link>
+      |
+      <router-link to="/figures">Key Figures</router-link>
+    </nav>
 
-  <section class="testimony">
-    <h2>Personal Testimony</h2>
-    <p>
-      Sharing a personal testimony or an inspiring quote about the Restoration can be
-      powerful. For example, "I testify that the Restoration of the Gospel was a divine
-      act of love by our Heavenly Father, meant to guide us in these latter days..."
-    </p>
-  </section>
+    <section class="testimony">
+      <h2>Our Testimony</h2>
+      <p>
+        "We testify of the Restoration of the Gospel in these latter days and invite you to explore its history and
+        teachings through this platform."
+      </p>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
-import { useStore } from "vuex";
-
-export default defineComponent({
-	name: "HomePage", // Replace with your component name
-	setup() {
-		const store = useStore();
-	},
-});
+export default {
+  name: "HomePage",
+};
 </script>
 
 <style scoped>
-.restoration-intro {
+.intro h1 {
+  text-align: center;
+  color: #2a6496;
+  font-size: 2.5em;
+}
+
+.intro, .testimony {
   background-color: #f0f0f0;
   padding: 20px;
+  margin-bottom: 20px;
+}
+
+.featured-links {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.featured-links a {
+  padding: 10px;
+  background-color: #e0e0e0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.testimony h2 {
+  font-size: 1.5em;
 }
 
 .restoration-intro h1 {
   color: #2a6496;
   font-size: 2em;
-}
-
-.key-events {
-  background-color: #e0e0e0;
-  padding: 20px;
 }
 
 .key-events h2 {

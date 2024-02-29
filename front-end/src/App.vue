@@ -9,12 +9,22 @@
         <li>
           <router-link class="nav-link" to="/">Home</router-link>
         </li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Experience</a></li>
+        <!-- Assuming you want to keep these placeholders or update them later -->
+        <li>
+          <router-link class="nav-link" to="/map">Interactive Map</router-link>
+        </li>
+        <li>
+          <router-link class="nav-link" to="/events">Key Events</router-link>
+        </li>
+        <li>
+          <router-link class="nav-link" to="/figures">Key Figures</router-link>
+        </li>
         <li>
           <router-link class="nav-link" to="/about">About</router-link>
         </li>
-        <li><a href="#contact">Contact</a></li>
+        <li>
+          <router-link class="nav-link" to="/contact">Contact</router-link>
+        </li>
       </ul>
 
       <!-- Note: this is a pseudo container, for design only -->
@@ -24,8 +34,10 @@
         <li class="pseudo_element"></li>
         <li class="pseudo_element"></li>
         <li class="pseudo_element"></li>
+        <li class="pseudo_element"></li>
       </ul>
     </nav>
+
 
     <!-----------------
     -   Router View   -
@@ -61,6 +73,21 @@
     </footer>
   </div>
 </template>
+
+<script lang="ts">
+import {onMounted} from "vue";
+import {useStore} from "vuex";
+
+export default {
+  name: "App",
+  setup() {
+    const store = useStore();
+    onMounted(() => {
+      store.dispatch("fetchEvents");
+    });
+  },
+};
+</script>
 
 <style>
   html, body, div, span, applet, object, iframe,
@@ -199,12 +226,6 @@
   *   Navigation   *
   *****************/
 
-  /*nav.local,*/
-  /*#real_list,*/
-  /*#pseudo_list {*/
-  /*  margin-bottom: 2%;*/
-  /*}*/
-
   nav.local {
     position: relative;
   }
@@ -225,6 +246,7 @@
     display: flex;
     justify-content: space-between;
     list-style-type: none;
+    padding-left: 0;
   }
 
   li.pseudo_element {
@@ -259,11 +281,6 @@
   *   Footer   *
   *************/
 
-  /* footer a{ display: block; } */
-  /* footer a:link, footer a:visited, footer a:focus{ background: rgb(128,128,128); }
-  footer a:hover{  background: rgb(110,110,110); }
-  footer a:active{ background: rgb(100,100,100); } */
-
   footer h2 {
     width: 100%;
   }
@@ -279,15 +296,3 @@
     list-style: none;
   }
 </style>
-
-<script lang="ts">
-import { defineComponent, computed } from "vue";
-import { useStore } from "vuex";
-
-export default defineComponent({
-	name: "App", // Replace with your component name
-	setup() {
-		const store = useStore();
-	},
-});
-</script>

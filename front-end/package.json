@@ -1,6 +1,6 @@
 {
   "name": "front-end",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "author": "Jacob Anderson",
   "keywords": [],
@@ -16,6 +16,7 @@
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "bootstrap-vue": "^2.23.1",
+    "leaflet": "^1.9.4",
     "vue": "^3.4.21",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.3.0",

@@ -1,62 +1,52 @@
 <template>
-  <section class="restoration-intro">
-    <h1>The Restoration of the Gospel</h1>
-    <p>
-      The Restoration of the Gospel of Jesus Christ is a pivotal event in LDS doctrine,
-      marking the beginning of a new era of spiritual guidance and church establishment
-      by Joseph Smith, following heavenly visions and revelations.
-    </p>
-  </section>
+  <div class="about">
+    <section class="project-background">
+      <h1>About the Digital Restoration Journey</h1>
+      <p>
+        This project was conceived as a bridge between technology and faith, aiming to make the rich history of the
+        Restoration accessible to all through interactive media.
+      </p>
+    </section>
 
-  <section class="key-events">
-    <h2>Key Events of the Restoration</h2>
-    <ul>
-      <li>The First Vision</li>
-      <li>Translation of the Book of Mormon</li>
-      <li>Restoration of the Priesthood</li>
-      <li>Organization of the Church</li>
-      <!-- Add more list items as needed -->
-    </ul>
-  </section>
+    <section class="motivation">
+      <h2>Motivation Behind the Project</h2>
+      <p>
+        Our love for programming and storytelling drives this project. We believe in the power of interactive learning
+        to bring historical events to life and inspire faith in individuals around the globe.
+      </p>
+    </section>
 
-  <section class="testimony">
-    <h2>Personal Testimony</h2>
-    <p>
-      Sharing a personal testimony or an inspiring quote about the Restoration can be
-      powerful. For example, "I testify that the Restoration of the Gospel was a divine
-      act of love by our Heavenly Father, meant to guide us in these latter days..."
-    </p>
-  </section>
-
-  <!-- Add more sections as needed -->
+    <section class="how-it-works">
+      <h2>How to Explore the Digital Restoration</h2>
+      <p>
+        Navigate through the Interactive Map to discover key events and figures. Each point on the map is a gateway to a
+        story, enriched with texts, images, and videos.
+      </p>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
-import { useStore } from "vuex";
-
-export default defineComponent({
-	name: "AboutPage", // Replace with your component name
-	setup() {
-		const store = useStore();
-	},
-});
+export default {
+  name: "AboutPage",
+};
 </script>
 
 <style scoped>
-.restoration-intro {
+.about h1, .about h2 {
+  text-align: center;
+  color: #2a6496;
+}
+
+.project-background, .motivation, .how-it-works {
   background-color: #f0f0f0;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 .restoration-intro h1 {
   color: #2a6496;
   font-size: 2em;
-}
-
-.key-events {
-  background-color: #e0e0e0;
-  padding: 20px;
 }
 
 .key-events h2 {
@@ -72,11 +62,6 @@ export default defineComponent({
   content: '✓';
   margin-right: 8px;
   color: green;
-}
-
-.testimony {
-  background-color: #d0d0d0;
-  padding: 20px;
 }
 
 .testimony h2 {
