@@ -5,53 +5,93 @@
   "author": "Jacob Anderson",
   "keywords": [],
   "license": "ISC",
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "npm run lint-fix && vue-cli-service serve",
+    "build": "rm -rf dist && vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lint-fix": "vue-cli-service lint --fix"
   },
   "main": "dist/script.js",
   "dependencies": {
-    "axios": "^1.6.7",
-    "bootstrap": "^5.3.3",
-    "bootstrap-vue": "^2.23.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/vue-fontawesome": "^3.0.6",
     "leaflet": "^1.9.4",
     "vue": "^3.4.21",
-    "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.3.0",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.22",
+    "@types/leaflet": "^1.9.8",
+    "@types/node": "^20.11.30",
     "@types/webpack-env": "^1.18.4",
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-plugin-router": "~5.0.8",
     "@vue/cli-plugin-typescript": "~5.0.8",
     "@vue/cli-service": "~5.0.8",
-    "@vue/eslint-config-typescript": "^12.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.22.0",
+    "eslint-plugin-vue": "^9.24.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.3"
   },
   "eslintConfig": {
     "root": true,
     "env": {
+      "browser": true,
+      "es2021": true,
       "node": true
     },
     "extends": [
-      "plugin:vue/vue3-essential",
       "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:vue/vue3-essential",
       "@vue/typescript"
     ],
     "parserOptions": {
-      "parser": "@typescript-eslint/parser"
+      "ecmaVersion": "latest",
+      "parser": "@typescript-eslint/parser",
+      "sourceType": "module"
     },
-    "rules": {}
+    "rules": {
+      "indent": [
+        "error",
+        "tab"
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          ".eslintrc.{js,cjs}"
+        ],
+        "env": {
+          "node": true
+        },
+        "parserOptions": {
+          "sourceType": "script"
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",

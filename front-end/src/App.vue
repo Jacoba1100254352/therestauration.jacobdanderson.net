@@ -1,298 +1,202 @@
 <template>
   <div id="app">
-    <!----------------
-    -   Navigation   -
-    ----------------->
-
     <nav class="local">
       <ul id="real_list" class="flexbox_container">
-        <li>
-          <router-link class="nav-link" to="/">Home</router-link>
+        <li :class="{ 'expanded': isExpanded, 'active': activeLink === 'Home' }" @click="toggleMenu()">
+          <router-link class="nav-link" to="/" @click="setActiveLink('Home', $event)">Home</router-link>
         </li>
-        <!-- Assuming you want to keep these placeholders or update them later -->
-        <li>
-          <router-link class="nav-link" to="/map">Interactive Map</router-link>
+        <li v-for="(link, index) in links" :key="index"
+            :class="{ 'expanded': isExpanded, 'active': activeLink === link.name }" @click="toggleMenu()">
+          <router-link :to="link.path" class="nav-link" @click="setActiveLink(link.name, $event)">{{
+              link.name
+            }}
+          </router-link>
         </li>
-        <li>
-          <router-link class="nav-link" to="/events">Key Events</router-link>
-        </li>
-        <li>
-          <router-link class="nav-link" to="/figures">Key Figures</router-link>
-        </li>
-        <li>
-          <router-link class="nav-link" to="/about">About</router-link>
-        </li>
-        <li>
-          <router-link class="nav-link" to="/contact">Contact</router-link>
-        </li>
-      </ul>
-
-      <!-- Note: this is a pseudo container, for design only -->
-      <ul id="pseudo_list" class="flexbox_container">
-        <li class="pseudo_element"></li>
-        <li class="pseudo_element"></li>
-        <li class="pseudo_element"></li>
-        <li class="pseudo_element"></li>
-        <li class="pseudo_element"></li>
-        <li class="pseudo_element"></li>
       </ul>
     </nav>
 
+    <div class="content">
+      <router-view/>
 
-    <!-----------------
-    -   Router View   -
-    ------------------>
+      <!-- Additional Router View for Contact Page on Home Page -->
+      <router-view v-if="route.path === '/'" name="contact"/>
 
-    <router-view />
-
-    <!------------
-    -   Footer   -
-    ------------->
-
-    <footer id="contact" class="section flexbox_container">
-      <h2>Contact</h2>
-      <nav class="footer_nav">
-        <ul>
-          <li>
-            <a href="https://www.facebook.com/jacoba1100254352" target="_blank"
-            >Facebook</a
-            >
-          </li>
-          <li>
-            <a href="https://www.github.com/Jacoba1100254352" target="_blank"
-            >Github</a
-            >
-          </li>
-          <li>
-            <a href="https://www.instagram.com/jacoba1100254352" target="_blank"
-            >Instagram</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </footer>
+      <!-- Footer Component -->
+      <!--      <FooterComponent v-if="route.path !== '/'"/>-->
+      <FooterComponent/>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import {onMounted} from "vue";
-import {useStore} from "vuex";
+import {defineComponent, ref} from "vue";
+import {useRoute} from "vue-router";
+import FooterComponent from "./components/FooterComponent.vue";
 
-export default {
+export default defineComponent({
   name: "App",
-  setup() {
-    const store = useStore();
-    onMounted(() => {
-      store.dispatch("fetchEvents");
-    });
+  components: {
+    FooterComponent
   },
-};
+  setup() {
+    const route = useRoute();
+    const isExpanded = ref(false);
+    const links = ref([
+      {name: "Map", path: "/map"},
+      {name: "Events", path: "/events"},
+      {name: "Figures", path: "/figures"},
+      {name: "About", path: "/about"},
+      {name: "Contact", path: "/contact"},
+    ]);
+
+    const toggleMenu = () => {
+      isExpanded.value = !isExpanded.value;
+    };
+
+    const activeLink = ref("Home"); // Default active link is 'Home'
+
+    const setActiveLink = (linkName: string, event: Event) => {
+      event.preventDefault();
+      activeLink.value = linkName;
+    };
+
+    return {route, isExpanded, links, toggleMenu, activeLink, setActiveLink};
+  }
+});
 </script>
 
+
+<!--suppress CssUnusedSymbol -->
 <style>
-  html, body, div, span, applet, object, iframe,
-  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-  a, abbr, acronym, address, big, cite, code,
-  del, dfn, em, img, ins, kbd, q, s, samp,
-  small, strike, strong, sub, sup, tt, var,
-  b, u, center,
-  dl, dt, dd, ol, ul, li,
-  fieldset, form, label, legend,
-  table, caption, tbody, tfoot, thead, tr, th, td,
-  article, aside, canvas, details, embed,
-  figure, figcaption, footer, header, hgroup,
-  menu, nav, output, ruby, section, summary,
-  time, mark, audio, video /* eslint-disable-line */ {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-  }
+/**************
+*   General   *
+**************/
 
-  /* HTML5 display-role reset for older browsers */
-  article, aside, details, figcaption, figure,
-  footer, header, hgroup, menu, nav, section /* eslint-disable-line */ {
-    display: block;
-  }
+body {
+  background-color: #f5f5f5;
+  font-size: 110%;
+  margin: 0;
+}
 
-  body {
-    line-height: 1;
-  }
+.content {
+  margin: 20px;
+}
 
-  ol,
-  ul {
-    list-style: none;
-  }
+/******************
+*   Router View   *
+******************/
 
-  blockquote,
-  q {
-    quotes: none;
-  }
+h1, h2, h3 {
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 5px;
+  margin: 0;
+  color: #2a6496;
+}
 
-  blockquote:before,
-  blockquote:after,
-  q:before,
-  q:after {
-    content: "";
-    content: none;
-  }
+h1 {
+  font-size: 200%;
+}
 
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
+h2 {
+  font-size: 150%;
+}
 
-  /**************
-  *   General   *
-  **************/
+h3 {
+  font-size: 100%;
+}
 
-  * {
-    box-sizing: border-box;
-  }
+.page {
+  background-color: #f5f5f5;
+}
 
-  body {
-    background-color: lightblue;
-    font-family: sans-serif;
+.item {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 
-    --nav_height: calc(2 * var(--size_adjustment));
-    /*--common_background_color: white;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-    --text_scalar: 1;
-    --size_adjustment: 1.5;
-  }
+.item p {
+  margin-top: 10px;
+}
 
-  .section {
-    background-color: whitesmoke;
-    padding: 10px 20px;
-    margin: 1%;
-    text-align: center;
-  }
 
-  h2 {
-    font-weight: bold;
-    text-align: center;
-    font-size: 125%;
-    padding-bottom: 5px;
-  }
+/*****************
+*   Navigation   *
+*****************/
 
-  /********************
-  *   Media Screens   *
-  ********************/
+nav.local {
+  position: relative;
+}
 
-  @media screen and (min-width: 961px) {
-    .flexbox_container {
-      display: flex;
-      justify-content: space-between;
-      flex-flow: row wrap;
-    }
+.nav-link {
+  text-decoration: none;
+  padding: 3%;
+  color: black;
+}
 
-    article {
-      display: flex;
-      flex-flow: column nowrap;
-      width: 49%;
-    }
+ul.flexbox_container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 
-    #experience ul {
-      transform: translateX(2%);
-    }
-  }
+  list-style-type: none;
 
-  /* Tablet Styles */
-  @media only screen and (min-width: 401px) and (max-width: 960px) {
-    body {
-      width: 100%;
-    }
+  padding: 0;
+  margin: 0;
+}
 
-    ul.flexbox_container {
-      flex-flow: row wrap;
-    }
+nav.local li {
+  background-color: rgb(160, 160, 160);
+  border-right: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    nav.local {
-      width: 100%;
-    }
+nav.local li:last-child {
+  border-right: none;
+}
 
-    nav.local ul li {
-      width: 100%;
-    }
+nav.local > ul > li {
+  width: 20%;
+  height: 75px;
+}
 
-    .section {
-      width: 100%;
-    }
-  }
-
-  /*****************
-  *   Navigation   *
-  *****************/
-
-  nav.local {
-    position: relative;
-  }
-
-  nav.local li {
-    width: calc(100% / 5);
-  }
-
-  nav.local a {
-    text-decoration: none;
-    color: black;
-    display: block;
-    padding: 3%;
-  }
-
-  ul.flexbox_container {
-    flex-flow: row nowrap;
-    display: flex;
-    justify-content: space-between;
-    list-style-type: none;
-    padding-left: 0;
-  }
-
-  li.pseudo_element {
-    background-color: rgb(160, 160, 160);
-  }
-
-  #pseudo_list li {
-    min-width: 80px;
-  }
-
-  #pseudo_list {
-    outline: 1px solid;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-  }
-
-  #real_list,
-  #real_list li {
-    text-align: center;
-    align-items: center;
-    z-index: 1;
+@media (max-width: 480px) {
+  nav.local ul.flexbox_container {
+    flex-direction: column;
   }
 
   nav.local > ul > li {
-    width: 20%;
-    line-height: var(--nav_height);
-  }
-
-  /*************
-  *   Footer   *
-  *************/
-
-  footer h2 {
     width: 100%;
   }
 
-  footer nav {
-    width: 100%;
+  nav.local li {
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    padding: 10px 0; /* Add padding */
+    border-right: none;
   }
 
-  footer ul {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    list-style: none;
+  nav.local li:first-child {
+    position: relative;
   }
+
+  nav.local li.expanded:first-child::after {
+    transform: rotate(90deg); /* Rotate the arrow */
+  }
+
+  nav.local li:not(.active):not(.expanded) {
+    display: none;
+  }
+}
 </style>

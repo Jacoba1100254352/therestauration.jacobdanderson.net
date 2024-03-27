@@ -1,70 +1,74 @@
 <template>
-  <div class="about">
-    <section class="project-background">
-      <h1>About the Digital Restoration Journey</h1>
-      <p>
-        This project was conceived as a bridge between technology and faith, aiming to make the rich history of the
-        Restoration accessible to all through interactive media.
-      </p>
-    </section>
+  <div class="page">
+    <div class="item">
+      <h1>{{ about.header.title }}</h1>
+      <p>{{ about.header.description }}</p>
+    </div>
 
-    <section class="motivation">
-      <h2>Motivation Behind the Project</h2>
-      <p>
-        Our love for programming and storytelling drives this project. We believe in the power of interactive learning
-        to bring historical events to life and inspire faith in individuals around the globe.
-      </p>
-    </section>
-
-    <section class="how-it-works">
-      <h2>How to Explore the Digital Restoration</h2>
-      <p>
-        Navigate through the Interactive Map to discover key events and figures. Each point on the map is a gateway to a
-        story, enriched with texts, images, and videos.
-      </p>
-    </section>
+    <div v-for="(item, index) in about.body" :key="index" class="item body">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-export default {
+import {computed, defineComponent} from "vue";
+import {useStore} from "vuex";
+
+export default defineComponent({
   name: "AboutPage",
-};
+  components: {},
+  setup() {
+    const store = useStore();
+    const about = computed(() => store.state.about);
+
+    return {about};
+  }
+});
 </script>
 
 <style scoped>
-.about h1, .about h2 {
+h1, h2 {
+  font-weight: bold;
   text-align: center;
+  padding-bottom: 5px;
+  margin: 0;
   color: #2a6496;
 }
 
-.project-background, .motivation, .how-it-works {
-  background-color: #f0f0f0;
-  padding: 20px;
+h1 {
+  font-size: 200%;
+}
+
+h2 {
+  font-size: 150%;
+}
+
+.page {
+  background-color: #f5f5f5;
+}
+
+.item {
   margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.restoration-intro h1 {
-  color: #2a6496;
-  font-size: 2em;
+.item p {
+  margin-top: 10px;
 }
 
-.key-events h2 {
-  font-size: 1.5em;
-}
-
-.key-events ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.key-events li:before {
-  content: '✓';
-  margin-right: 8px;
-  color: green;
-}
-
-.testimony h2 {
-  font-size: 1.5em;
+.body {
+  display: inline-block;
+  width: 45%;
 }
 </style>

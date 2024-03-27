@@ -1,26 +1,28 @@
 <template>
-  <div class="contact-page">
-    <h1>Contact Us</h1>
-    <p>If you have any questions or feedback, please feel free to reach out to us through the form below.</p>
+  <div class="page">
+    <h1>Contact Me</h1>
+    <div class="item">
+      <p>If you have any questions or feedback, please feel free to reach out to us through the form below.</p>
 
-    <form @submit.prevent="handleSubmit">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input id="name" v-model="form.name" required type="text">
-      </div>
+      <form @submit.prevent="handleSubmit">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input id="name" v-model="form.name" required type="text">
+        </div>
 
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input id="email" v-model="form.email" required type="email">
-      </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" v-model="form.email" required type="email">
+        </div>
 
-      <div class="form-group">
-        <label for="message">Message:</label>
-        <textarea id="message" v-model="form.message" required rows="4"></textarea>
-      </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" v-model="form.message" required rows="4"></textarea>
+        </div>
 
-      <button type="submit">Send Message</button>
-    </form>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -54,12 +56,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.contact-page {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-}
-
 .form-group {
   margin-bottom: 20px;
 }

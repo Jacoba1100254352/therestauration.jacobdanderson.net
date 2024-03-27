@@ -10,18 +10,15 @@
 </template>
 
 <script>
-import {computed} from "vue";
 import {useStore} from "vuex";
 
 export default {
   name: "EventsComponent",
-  setup() {
-    const store = useStore();
-    const events = computed(() => store.getters.events);
-
-    return {
-      events
-    };
+  computed: {
+    events() {
+      const store = useStore();
+      return store.getters.events;
+    }
   }
 };
 </script>
