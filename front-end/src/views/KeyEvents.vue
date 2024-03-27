@@ -16,14 +16,14 @@ import {computed, defineComponent} from "vue";
 import {useStore} from "vuex";
 
 export default defineComponent({
-  name: "KeyEvents",
-  components: {},
-  setup() {
-    const store = useStore();
-    const events = computed(() => store.state.events);
+	name: "KeyEvents",
+	components: {},
+	setup() {
+		const store = useStore();
+		const events = computed(() => store.state.events);
 
-    return {events};
-  }
+		return {events};
+	}
 });
 </script>
 

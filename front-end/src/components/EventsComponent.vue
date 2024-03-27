@@ -13,13 +13,13 @@
 import {useStore} from "vuex";
 
 export default {
-  name: "EventsComponent",
-  computed: {
-    events() {
-      const store = useStore();
-      return store.getters.events;
-    }
-  }
+	name: "EventsComponent",
+	computed: {
+		events() {
+			const store = useStore();
+			return store.getters.events;
+		}
+	}
 };
 </script>
 

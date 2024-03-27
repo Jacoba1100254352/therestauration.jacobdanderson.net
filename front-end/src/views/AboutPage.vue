@@ -17,14 +17,14 @@ import {computed, defineComponent} from "vue";
 import {useStore} from "vuex";
 
 export default defineComponent({
-  name: "AboutPage",
-  components: {},
-  setup() {
-    const store = useStore();
-    const about = computed(() => store.state.about);
+	name: "AboutPage",
+	components: {},
+	setup() {
+		const store = useStore();
+		const about = computed(() => store.state.about);
 
-    return {about};
-  }
+		return {about};
+	}
 });
 </script>
 

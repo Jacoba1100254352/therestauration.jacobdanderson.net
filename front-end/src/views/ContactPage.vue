@@ -30,28 +30,28 @@
 import {defineComponent, ref} from "vue";
 
 export default defineComponent({
-  name: "ContactPage",
-  setup() {
-    const form = ref({
-      name: "",
-      email: "",
-      message: ""
-    });
+	name: "ContactPage",
+	setup() {
+		const form = ref({
+			name: "",
+			email: "",
+			message: ""
+		});
 
-    const handleSubmit = () => {
-      console.log("Form submitted:", form.value);
-      alert("Message sent! We'll get back to you soon.");
-      // Reset form
-      form.value.name = "";
-      form.value.email = "";
-      form.value.message = "";
-    };
+		const handleSubmit = () => {
+			console.log("Form submitted:", form.value);
+			alert("Message sent! We'll get back to you soon.");
+			// Reset form
+			form.value.name = "";
+			form.value.email = "";
+			form.value.message = "";
+		};
 
-    return {
-      form,
-      handleSubmit
-    };
-  }
+		return {
+			form,
+			handleSubmit
+		};
+	}
 });
 </script>
 

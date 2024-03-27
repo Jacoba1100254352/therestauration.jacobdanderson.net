@@ -15,16 +15,16 @@ import {useStore} from "vuex";
 import MapComponent from "@/components/MapComponent.vue"; // Adjust the path based on your project structure
 
 export default {
-  name: "InteractiveMap",
-  components: {
-    MapComponent
-  },
-  setup() {
-    const store = useStore();
-    const map = computed(() => store.state.map);
+	name: "InteractiveMap",
+	components: {
+		MapComponent
+	},
+	setup() {
+		const store = useStore();
+		const map = computed(() => store.state.map);
 
-    return {map};
-  }
+		return {map};
+	}
 };
 </script>
 

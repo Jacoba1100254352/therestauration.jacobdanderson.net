@@ -34,34 +34,34 @@ import {useRoute} from "vue-router";
 import FooterComponent from "./components/FooterComponent.vue";
 
 export default defineComponent({
-  name: "App",
-  components: {
-    FooterComponent
-  },
-  setup() {
-    const route = useRoute();
-    const isExpanded = ref(false);
-    const links = ref([
-      {name: "Map", path: "/map"},
-      {name: "Events", path: "/events"},
-      {name: "Figures", path: "/figures"},
-      {name: "About", path: "/about"},
-      {name: "Contact", path: "/contact"},
-    ]);
+	name: "App",
+	components: {
+		FooterComponent
+	},
+	setup() {
+		const route = useRoute();
+		const isExpanded = ref(false);
+		const links = ref([
+			{name: "Map", path: "/map"},
+			{name: "Events", path: "/events"},
+			{name: "Figures", path: "/figures"},
+			{name: "About", path: "/about"},
+			{name: "Contact", path: "/contact"},
+		]);
 
-    const toggleMenu = () => {
-      isExpanded.value = !isExpanded.value;
-    };
+		const toggleMenu = () => {
+			isExpanded.value = !isExpanded.value;
+		};
 
-    const activeLink = ref("Home"); // Default active link is 'Home'
+		const activeLink = ref("Home"); // Default active link is 'Home'
 
-    const setActiveLink = (linkName: string, event: Event) => {
-      event.preventDefault();
-      activeLink.value = linkName;
-    };
+		const setActiveLink = (linkName: string, event: Event) => {
+			event.preventDefault();
+			activeLink.value = linkName;
+		};
 
-    return {route, isExpanded, links, toggleMenu, activeLink, setActiveLink};
-  }
+		return {route, isExpanded, links, toggleMenu, activeLink, setActiveLink};
+	}
 });
 </script>
 

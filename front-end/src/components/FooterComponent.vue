@@ -27,7 +27,7 @@
 import {defineComponent} from "vue";
 
 export default defineComponent({
-  name: "FooterComponent",
+	name: "FooterComponent",
 });
 </script>
 

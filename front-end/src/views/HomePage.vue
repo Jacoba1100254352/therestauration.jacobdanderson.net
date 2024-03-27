@@ -24,14 +24,14 @@ import {computed, defineComponent} from "vue";
 import {useStore} from "vuex";
 
 export default defineComponent({
-  name: "HomePage",
-  components: {},
-  setup() {
-    const store = useStore();
-    const home = computed(() => store.state.home);
+	name: "HomePage",
+	components: {},
+	setup() {
+		const store = useStore();
+		const home = computed(() => store.state.home);
 
-    return {home};
-  }
+		return {home};
+	}
 });
 </script>
 

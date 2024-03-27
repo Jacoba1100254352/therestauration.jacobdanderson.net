@@ -16,14 +16,14 @@ import {computed, defineComponent} from "vue";
 import {useStore} from "vuex";
 
 export default defineComponent({
-  name: "KeyFigures",
-  components: {},
-  setup() {
-    const store = useStore();
-    const figures = computed(() => store.state.figures);
+	name: "KeyFigures",
+	components: {},
+	setup() {
+		const store = useStore();
+		const figures = computed(() => store.state.figures);
 
-    return {figures};
-  }
+		return {figures};
+	}
 });
 </script>
 
