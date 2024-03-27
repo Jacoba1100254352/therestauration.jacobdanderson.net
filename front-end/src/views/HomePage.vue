@@ -1,3 +1,11 @@
+<script lang="ts" setup>
+import { computed } from "vue";
+import { useStore } from "~/store"; // Ensure this points to your configured Pinia store
+
+const store = useStore();
+const home = computed(() => store.home);
+</script>
+
 <template>
   <div class="page">
     <div class="item">
@@ -5,11 +13,17 @@
     </div>
 
     <nav class="featured-links">
-      <router-link to="/map">Interactive Map</router-link>
+      <router-link to="/map">
+        Interactive Map
+      </router-link>
       |
-      <router-link to="/events">Key Events</router-link>
+      <router-link to="/events">
+        Key Events
+      </router-link>
       |
-      <router-link to="/figures">Key Figures</router-link>
+      <router-link to="/figures">
+        Key Figures
+      </router-link>
     </nav>
 
     <div class="item">
@@ -18,22 +32,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import {computed, defineComponent} from "vue";
-import {useStore} from "vuex";
-
-export default defineComponent({
-	name: "HomePage",
-	components: {},
-	setup() {
-		const store = useStore();
-		const home = computed(() => store.state.home);
-
-		return {home};
-	}
-});
-</script>
 
 <style scoped>
 .featured-links {
